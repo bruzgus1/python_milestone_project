@@ -24,3 +24,16 @@ watchlist.pop(0)
 print(watchlist)
 
 user_input = input("Anime Title you wish to add to the list: ")
+
+
+def check_user_entry():
+
+    """
+    Checks if the Anime Title the user entered already exists in the worksheet
+    """
+    for i in watchlist:
+        if i == user_input:
+            print("Error entry already exist")
+
+
+check_user_entry()
