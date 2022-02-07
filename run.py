@@ -17,8 +17,10 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('anime_watchlist')
 
-sales = SHEET.worksheet('watchlist')
+watchlist = SHEET.worksheet("watchlist").col_values(1)
 
-data = sales.get_all_values()
+watchlist.pop(0)
 
-print(data)
+print(watchlist)
+
+user_input = input("Anime Title you wish to add to the list: ")
