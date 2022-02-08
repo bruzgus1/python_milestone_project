@@ -44,7 +44,15 @@ def check_user_entry():
         else:
             print("Wrong user input, Quiting program...")
     else:
-        print("it activates every time the input does not match")
+        col_index = len(watchlist_col)+2
+        question = input("Have you seen this Anime?, Please answer yes/no: ")
+        SHEET.worksheet("watchlist").update(f"A{col_index}", user_input)
+        if question == "yes":
+            SHEET.worksheet("watchlist").update(f"B{col_index}", "yes")
+        elif question == "no":
+            SHEET.worksheet("watchlist").update(f"B{col_index}", "no")
+        else:
+            print("Wrong user input, Quiting program...")
 
 
 check_user_entry()
