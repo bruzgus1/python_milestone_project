@@ -24,32 +24,19 @@ def main():
 
     global WATCHLIST_COL
 
-    WATCHLIST_COL = SHEET.worksheet("watchlist").col_values(1)  # access all the titles in the spreadsheet
+    # access all the titles in the spreadsheet
+    WATCHLIST_COL = SHEET.worksheet("watchlist").col_values(1)
 
-    WATCHLIST_COL.pop(0)  # removes the first item in the list that is not needed for the program
+    # removes the first item in the list that is not needed for the program
+    WATCHLIST_COL.pop(0)
 
     print(WATCHLIST_COL)  # temporary to see what kind of list I have now
 
-    print()
-    print("-----------------------------------------------------------------------------------")
-    print("Welcome, this program was created to help you keep track")
-    print("of the anime titles you have already seen")
-    print("the program won't let you have duplicate names on your list")
-    print("so you don't have to wonder if you have accidentally entered the same title twice")
-    print("-----------------------------------------------------------------------------------")
-    print()
-    print("Program Starting...")
-    print()
+    # calls the starter print messages
+    starting_print()
 
-    global USER_INPUT
-
-    USER_INPUT = input("Anime Title you wish to add to the list: ")
-
-    if USER_INPUT == "":
-        print()
-        print("Wrong user input, Quiting program...")
-    else:
-        check_user_entry()
+    # calls the first user input
+    first_user_input()
 
 
 def check_user_entry():
@@ -61,43 +48,94 @@ def check_user_entry():
         print()
         print("scanning your list...")
         print()
-        row_index = WATCHLIST_COL.index(USER_INPUT)+2
-        question = input("Entry already exist, have you seen this Anime?, Please answer yes/no: ")
-        print()
-        if question == "yes":
-            print("adding your inputs to google sheets...")
-            SHEET.worksheet("watchlist").update(f"B{row_index}", "yes")
-            print()
-            print("inputs have been added...")
-        elif question == "no":
-            print("adding your inputs to google sheets...")
-            SHEET.worksheet("watchlist").update(f"B{row_index}", "no")
-            print()
-            print("inputs have been added...")
-        else:
-            print()
-            print("Wrong user input, Quiting program...")
+        title_in_list()
     else:
         print()
         print("scanning your list...")
         print()
-        col_index = len(WATCHLIST_COL)+2
-        question = input("Have you seen this Anime?, Please answer yes/no: ")
-        SHEET.worksheet("watchlist").update(f"A{col_index}", USER_INPUT)
+        title_not_in_list()
+
+
+def starting_print():
+    """
+    prints the messages that the user is shown
+    at the start of the program
+    """
+
+    print()
+    print("---------------------------------------------------------------")
+    print("Welcome, this program was created to help you keep track")
+    print("of the anime titles you have already seen")
+    print("the program won't let you have duplicate names on your list")
+    print("so you don't have to wonder")
+    print("if you have accidentally entered the same title twice")
+    print("---------------------------------------------------------------")
+    print()
+    print("Program Starting...")
+    print()
+
+
+def first_user_input():
+    """ executes the first user input """
+
+    global USER_INPUT
+
+    USER_INPUT = input("Anime Title you wish to add to/edit in the list: ")
+
+    if USER_INPUT == "":
         print()
-        if question == "yes":
-            print("adding your inputs to google sheets...")
-            SHEET.worksheet("watchlist").update(f"B{col_index}", "yes")
-            print()
-            print("inputs have been added...")
-        elif question == "no":
-            print("adding your inputs to google sheets...")
-            SHEET.worksheet("watchlist").update(f"B{col_index}", "no")
-            print()
-            print("inputs have been added...")
-        else:
-            print()
-            print("Wrong user input, Quiting program...")
+        print("Wrong user input, Quiting program...")
+    else:
+        check_user_entry()
+
+
+def title_in_list():
+    """
+    follows up with another question if the title
+    is found inside the list
+    """
+
+    row_index = WATCHLIST_COL.index(USER_INPUT)+2
+    question = input("Entry already exist, have you seen this Anime?, Please answer yes/no: ")
+    print()
+    if question == "yes":
+        print("adding your inputs to google sheets...")
+        SHEET.worksheet("watchlist").update(f"B{row_index}", "yes")
+        print()
+        print("inputs have been added...")
+    elif question == "no":
+        print("adding your inputs to google sheets...")
+        SHEET.worksheet("watchlist").update(f"B{row_index}", "no")
+        print()
+        print("inputs have been added...")
+    else:
+        print()
+        print("Wrong user input, Quiting program...")
+
+
+def title_not_in_list():
+    """
+    follows up with another question if the title
+    is not found inside the list
+    """
+
+    col_index = len(WATCHLIST_COL)+2
+    question = input("Have you seen this Anime?, Please answer yes/no: ")
+    SHEET.worksheet("watchlist").update(f"A{col_index}", USER_INPUT)
+    print()
+    if question == "yes":
+        print("adding your inputs to google sheets...")
+        SHEET.worksheet("watchlist").update(f"B{col_index}", "yes")
+        print()
+        print("inputs have been added...")
+    elif question == "no":
+        print("adding your inputs to google sheets...")
+        SHEET.worksheet("watchlist").update(f"B{col_index}", "no")
+        print()
+        print("inputs have been added...")
+    else:
+        print()
+        print("Wrong user input, Quiting program...")
 
 
 main()
