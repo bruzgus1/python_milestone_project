@@ -36,7 +36,10 @@ def main():
 
     USER_INPUT = input("Anime Title you wish to add to the list: ")
 
-    check_user_entry()
+    if USER_INPUT == "":
+        print("Wrong user input, Quiting program...")
+    else:
+        check_user_entry()
 
 
 def check_user_entry():
