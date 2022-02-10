@@ -158,14 +158,19 @@ def add_another_title():
 
     print()
     question = input("do you want to add/edit another title to/in the list?\
-    if so please answer, yes: \n")
+    Please answer, yes/no: \n")
 
     if question == "yes":
         print()
         first_user_input()
-    else:
+    elif question == "no":
         print()
         print("Understood, Program Shutting Down...")
+    else:
+        print()
+        print("Wrong user input, Try again...")
+        print()
+        add_another_title()
 
 
 main()
