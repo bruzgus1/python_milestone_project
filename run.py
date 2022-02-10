@@ -32,10 +32,10 @@ def main():
 
     print(WATCHLIST_COL)  # temporary to see what kind of list I have now
 
-    # calls the starter print messages
+    # calls the starter print messages, line 59
     starting_print()
 
-    # calls the first user input
+    # calls the first user input, line 78
     first_user_input()
 
 
@@ -48,12 +48,12 @@ def check_user_entry():
         print()
         print("scanning your list...")
         print()
-        title_in_list()
+        title_in_list()  # line 92
     else:
         print()
         print("scanning your list...")
         print()
-        title_not_in_list()
+        title_not_in_list()  # line 116
 
 
 def starting_print():
@@ -84,7 +84,9 @@ def first_user_input():
 
     if USER_INPUT == "":
         print()
-        print("Wrong user input, Quiting program...")
+        print("Wrong user input, Try again...")
+        print()
+        first_user_input()
     else:
         check_user_entry()
 
@@ -110,7 +112,9 @@ def title_in_list():
         print("inputs have been added...")
     else:
         print()
-        print("Wrong user input, Quiting program...")
+        print("Wrong user input, Try again...")
+        print()
+        title_in_list()
 
 
 def title_not_in_list():
@@ -135,7 +139,9 @@ def title_not_in_list():
         print("inputs have been added...")
     else:
         print()
-        print("Wrong user input, Quiting program...")
+        print("Wrong user input, Try again...")
+        print()
+        title_not_in_list()
 
 
 main()
