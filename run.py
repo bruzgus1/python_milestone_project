@@ -80,7 +80,7 @@ def first_user_input():
 
     global USER_INPUT
 
-    USER_INPUT = input("Anime Title you wish to add to/edit in the list: \")
+    USER_INPUT = input("Anime Title you wish to add to/edit in the list: \n")
 
     if USER_INPUT == "":
         print()
@@ -99,7 +99,7 @@ def title_in_list():
 
     row_index = WATCHLIST_COL.index(USER_INPUT)+2
     question = input("Entry already exist, have you seen this Anime?\
-    Please answer yes/no: \")
+    Please answer yes/no: \n")
     print()
     if question == "yes":
         print("adding your inputs to google sheets...")
@@ -129,7 +129,7 @@ def title_not_in_list():
     """
 
     col_index = len(WATCHLIST_COL)+2
-    question = input("Have you seen this Anime?, Please answer yes/no: \")
+    question = input("Have you seen this Anime?, Please answer yes/no: \n")
     SHEET.worksheet("watchlist").update(f"A{col_index}", USER_INPUT)
     print()
     if question == "yes":
@@ -158,7 +158,7 @@ def add_another_title():
 
     print()
     question = input("do you want to add/edit another title to/in the list?\
-    if so please answer, yes: \")
+    if so please answer, yes: \n")
 
     if question == "yes":
         print()
