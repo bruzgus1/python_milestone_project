@@ -48,12 +48,12 @@ def check_user_entry():
         print()
         print("scanning your list...")
         print()
-        title_in_list()  # line 92
+        title_in_list()  # line 94
     else:
         print()
         print("scanning your list...")
         print()
-        title_not_in_list()  # line 116
+        title_not_in_list()  # line 120
 
 
 def starting_print():
@@ -88,7 +88,7 @@ def first_user_input():
         print()
         first_user_input()
     else:
-        check_user_entry()
+        check_user_entry()  # line 42
 
 
 def title_in_list():
@@ -98,18 +98,23 @@ def title_in_list():
     """
 
     row_index = WATCHLIST_COL.index(USER_INPUT)+2
-    question = input("Entry already exist, have you seen this Anime?, Please answer yes/no: ")
+    question = input("Entry already exist, have you seen this Anime?\
+    Please answer yes/no: ")
     print()
     if question == "yes":
         print("adding your inputs to google sheets...")
         SHEET.worksheet("watchlist").update(f"B{row_index}", "yes")
         print()
         print("inputs have been added...")
+        # asks if the user wants to add another title, line 152
+        add_another_title()
     elif question == "no":
         print("adding your inputs to google sheets...")
         SHEET.worksheet("watchlist").update(f"B{row_index}", "no")
         print()
         print("inputs have been added...")
+        # asks if the user wants to add another title, line 152
+        add_another_title()
     else:
         print()
         print("Wrong user input, Try again...")
@@ -132,16 +137,35 @@ def title_not_in_list():
         SHEET.worksheet("watchlist").update(f"B{col_index}", "yes")
         print()
         print("inputs have been added...")
+        # asks if the user wants to add another title, line 152
+        add_another_title()
     elif question == "no":
         print("adding your inputs to google sheets...")
         SHEET.worksheet("watchlist").update(f"B{col_index}", "no")
         print()
         print("inputs have been added...")
+        # asks if the user wants to add another title, line 152
+        add_another_title()
     else:
         print()
         print("Wrong user input, Try again...")
         print()
         title_not_in_list()
+
+
+def add_another_title():
+    """ after adding the first title asks if you want to add another one """
+
+    print()
+    question = input("do you want to add/edit another title to/in the list?\
+    if so please answer, yes: ")
+
+    if question == "yes":
+        print()
+        first_user_input()
+    else:
+        print()
+        print("Understood, Program Shutting Down...")
 
 
 main()
