@@ -1,6 +1,6 @@
 # Anime Watchlist App
 
-[View the live project here.]()
+[View the live project here.](https://anime1watchlist.herokuapp.com/)
 
 this app was created to help keep track of all the diffrent titles you've seen,
 speaking from experience this is a very useful app when you've seen over 100 different ones.
