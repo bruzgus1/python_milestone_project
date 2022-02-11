@@ -45,6 +45,11 @@ def check_user_entry():
     """
     Checks if the Anime Title the user entered already exists in the worksheet
     """
+
+    WATCHLIST_COL = SHEET.worksheet("watchlist").col_values(1)
+
+    WATCHLIST_COL.pop(0)
+
     if LOWER_INPUT in WATCHLIST_COL:
         print()
         print("scanning your list...")
@@ -134,7 +139,7 @@ def title_not_in_list():
     WATCHLIST_COL = SHEET.worksheet("watchlist").col_values(1)
 
     WATCHLIST_COL.pop(0)
-    
+
     col_index = len(WATCHLIST_COL)+2
     print(col_index)
     SHEET.worksheet("watchlist").update(f"A{col_index}", LOWER_INPUT)
