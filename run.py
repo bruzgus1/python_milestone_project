@@ -45,7 +45,7 @@ def check_user_entry():
     """
     Checks if the Anime Title the user entered already exists in the worksheet
     """
-    if lower_input in WATCHLIST_COL:
+    if LOWER_INPUT in WATCHLIST_COL:
         print()
         print("scanning your list...")
         print()
@@ -81,11 +81,11 @@ def first_user_input():
 
     user_input = input("Anime Title you wish to add to/edit in the list: \n")
 
-    global lower_input
+    global LOWER_INPUT
 
-    lower_input = user_input.lower()
+    LOWER_INPUT = user_input.lower()
 
-    if lower_input == "":
+    if LOWER_INPUT == "":
         print()
         print("Wrong user input, Try again...")
         print()
@@ -100,7 +100,7 @@ def title_in_list():
     is found inside the list
     """
 
-    row_index = WATCHLIST_COL.index(lower_input)+2
+    row_index = WATCHLIST_COL.index(LOWER_INPUT)+2
     question = input("Entry already exist, have you seen this Anime?\
     Please answer yes/no: \n")
     print()
@@ -131,9 +131,15 @@ def title_not_in_list():
     is not found inside the list
     """
 
+    WATCHLIST_COL = SHEET.worksheet("watchlist").col_values(1)
+
+    WATCHLIST_COL.pop(0)
+    
     col_index = len(WATCHLIST_COL)+2
+    print(col_index)
+    SHEET.worksheet("watchlist").update(f"A{col_index}", LOWER_INPUT)
+
     question = input("Have you seen this Anime?, Please answer yes/no: \n")
-    SHEET.worksheet("watchlist").update(f"A{col_index}", lower_input)
     print()
     if question == "yes":
         print("adding your inputs to google sheets...")
