@@ -105,6 +105,10 @@ def title_in_list():
     is found inside the list
     """
 
+    WATCHLIST_COL = SHEET.worksheet("watchlist").col_values(1)
+
+    WATCHLIST_COL.pop(0)
+
     row_index = WATCHLIST_COL.index(LOWER_INPUT)+2
     question = input("Entry already exist, have you seen this Anime?\
     Please answer yes/no: \n")
@@ -141,7 +145,6 @@ def title_not_in_list():
     WATCHLIST_COL.pop(0)
 
     col_index = len(WATCHLIST_COL)+2
-    print(col_index)
     SHEET.worksheet("watchlist").update(f"A{col_index}", LOWER_INPUT)
 
     question = input("Have you seen this Anime?, Please answer yes/no: \n")

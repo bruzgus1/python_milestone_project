@@ -50,6 +50,12 @@ worry about making some kind of mistake.
 
 - Comes up at the end asking if you want to add another title or to finish up and shut down the program
 
+5. **Current Watchlist**
+
+![Current Watchlist](/images/current_watchlist.png)
+
+- this feature was created for the accessors as a user would have access to the spreadsheet and see everything happening in there
+
 ## Testing
 
 - Passed the code through PEP8 linter and confirmed there are no problems.
