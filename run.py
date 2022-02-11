@@ -30,10 +30,11 @@ def main():
     # removes the first item in the list that is not needed for the program
     WATCHLIST_COL.pop(0)
 
-    print(WATCHLIST_COL)  # temporary to see what kind of list I have now
-
     # calls the starter print messages, line 59
     starting_print()
+
+    # prints the current watchlist, line 179
+    current_watchlist()
 
     # calls the first user input, line 78
     first_user_input()
@@ -173,6 +174,24 @@ def add_another_title():
         print("Wrong user input, Try again...")
         print()
         add_another_title()
+
+
+def current_watchlist():
+    """ Prints the current watchlist values """
+
+    print("Current Watchlist:")
+
+    answers = SHEET.worksheet("watchlist").col_values(2)
+
+    answers.pop(0)
+
+    i = 0
+    number = 1
+    while i < len(WATCHLIST_COL):
+        print(f"{number}) {WATCHLIST_COL[i]}:{answers[i]}")
+        i += 1
+        number += 1
+    print()
 
 
 main()
