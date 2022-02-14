@@ -127,7 +127,6 @@ def title_in_list():
         # asks if the user wants to add another title, line 152
         add_another_title()
     else:
-        print()
         print("Wrong user input, Try again...")
         print()
         title_in_list()
