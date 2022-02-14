@@ -91,7 +91,6 @@ def first_user_input():
     LOWER_INPUT = user_input.lower()
 
     if LOWER_INPUT == "":
-        print()
         print("Wrong user input, Try again...")
         print()
         first_user_input()
@@ -145,12 +144,12 @@ def title_not_in_list():
     WATCHLIST_COL.pop(0)
 
     col_index = len(WATCHLIST_COL)+2
-    SHEET.worksheet("watchlist").update(f"A{col_index}", LOWER_INPUT)
 
     question = input("Have you seen this Anime?, Please answer yes/no: \n")
     print()
     if question == "yes":
         print("adding your inputs to google sheets...")
+        SHEET.worksheet("watchlist").update(f"A{col_index}", LOWER_INPUT)
         SHEET.worksheet("watchlist").update(f"B{col_index}", "yes")
         print()
         print("inputs have been added...")
@@ -158,13 +157,13 @@ def title_not_in_list():
         add_another_title()
     elif question == "no":
         print("adding your inputs to google sheets...")
+        SHEET.worksheet("watchlist").update(f"A{col_index}", LOWER_INPUT)
         SHEET.worksheet("watchlist").update(f"B{col_index}", "no")
         print()
         print("inputs have been added...")
         # asks if the user wants to add another title, line 152
         add_another_title()
     else:
-        print()
         print("Wrong user input, Try again...")
         print()
         title_not_in_list()
