@@ -24,6 +24,13 @@ and then get follow up questions based on user inputs and just to make sure the 
 you have to type in specified words for the program to take you to the next step, so you don't have to
 worry about making some kind of mistake.
 
+## Data Flow Model
+
+This is an updated version based on my mentors suggestions and feedback, the original one
+was a lot more simple
+
+![Data Flow Model](/images/data_flow_model.png)
+
 ## Features
 
 1. **Anime Title Input**
